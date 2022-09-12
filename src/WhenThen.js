@@ -10,9 +10,9 @@ import { store } from "./store";
 export class WhenThen extends LitElement {
   _store = new StoreSubscriber(this, () => store);
 
-  createRenderRoot() {
-    return this;
-  }
+  // createRenderRoot() {
+  //   return this;
+  // }
   static get properties() {
     return {
       title: { type: String },

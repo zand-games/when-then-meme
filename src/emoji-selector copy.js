@@ -42,13 +42,17 @@ export class EmojiSelector extends LitElement {
     var slider = this.shadowRoot.querySelector(".slider");
     var li = slider.querySelectorAll("ul li");
 
-    if (e.target.classList[1] == "down") {
-      if (li[this.score].nextElementSibling == null) return;
+    if (e.target.classList[1] == "right") {
+      if (
+        li[this.score].nextElementSibling.nextElementSibling
+          .nextElementSibling == null
+      )
+        return;
       li[this.score].style.display = "none";
       this.score++;
     }
 
-    if (e.target.classList[1] == "top") {
+    if (e.target.classList[1] == "left") {
       if (this.score == 0) return;
       li[this.score - 1].style.display = "inline-block";
       this.score--;
@@ -69,38 +73,34 @@ export class EmojiSelector extends LitElement {
         <li><img src="https://js.cx/carousel/9.png" /></li>
         <li><img src="https://js.cx/carousel/10.png" /></li>
       </ul>
-      <button class="arrow top" @click=${this.scroll}>⇧</button>
-      <button class="arrow down" @click=${this.scroll}>⇩</button>
+      <button class="arrow left" @click=${this.scroll}>⇦</button>
+      <button class="arrow right" @click=${this.scroll}>⇨</button>
     </div>`;
   }
 
   static get styles() {
     return css`
       .slider {
-        /* background-color: #eeeeee; */
+        background-color: #eeeeee;
         position: relative;
-        /* padding: 20px 13px; */
-        /* border: 1px solid #cccccc; */
-        overflow: none;
-        width: 130px;
-        height: 180px;
+        padding: 20px 13px;
+        border: 1px solid #cccccc;
+        border-radius: 15px;
+        width: 150px;
         overflow-x: hidden;
-        margin: 0px;
       }
       .slider ul li {
         display: inline-block;
       }
       .slider ul li img {
-        width: 130px;
-        height: 130px;
+        width: 150px;
+        height: 150px;
       }
       .slider .arrow {
         position: absolute;
-        /* top: 50%; */
+        top: 50%;
         height: 30px;
-        /* margin-top: -15px; */
-        width: 1.2em;
-        left: 40%;
+        margin-top: -15px;
         padding: 0;
         background: #ddd;
         border-radius: 15px;
@@ -108,11 +108,11 @@ export class EmojiSelector extends LitElement {
         font-size: 24px;
         color: #444;
       }
-      .slider .arrow.down {
-        bottom: 7px;
+      .slider .arrow.right {
+        right: 2px;
       }
-      .slider .arrow.top {
-        top: 0px;
+      .slider .arrow.left {
+        left: 2px;
       }
       .slider .arrow:focus {
         outline: none;
@@ -120,12 +120,6 @@ export class EmojiSelector extends LitElement {
       .slider .arrow:hover {
         background: #ccc;
         cursor: pointer;
-      }
-      .slide_list {
-        background-color: transparent;
-        padding: 0px;
-
-        margin-top: 25px;
       }
     `;
   }
