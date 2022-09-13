@@ -1,8 +1,11 @@
 import { LitElement, html, css } from "lit";
+
 export class EmojiSelector extends LitElement {
   static get properties() {
     return {
       id: { type: String },
+      color: { type: String },
+      selectedItem: { type: Number },
     };
   }
   dispatchInput(Value) {
@@ -22,20 +25,23 @@ export class EmojiSelector extends LitElement {
   firstUpdated() {
     super.firstUpdated();
     this.script();
-    // debugger;
-    // this.slider = this.shadowRoot.querySelector(".slider");
+    this.selectDefault();
   }
-  slider = 123;
   //li = slider.querySelectorAll("ul li")
   script() {
     var slider = this.shadowRoot.querySelector(".slider");
     var li = slider.querySelectorAll("ul li");
-    //var leftBtn = slider.querySelector("button.left");
-    //var rightBtn = slider.querySelector("button.right");
-    //var score = 0;
-    //alert(li.length * 150 + 50 + "px");
     slider.firstElementChild.style.width = li.length * 150 + 50 + "px";
-    //</li>slider.firstElementChild.style.width = li.length * 150 + 50 + "px";
+  }
+  selectDefault() {
+    debugger;
+    if (!this.selectedItem || this.selectedItem == 0) return;
+    this.score = this.selectedItem;
+    var slider = this.shadowRoot.querySelector(".slider");
+    var li = slider.querySelectorAll("ul li");
+    for (let index = 0; index < this.selectedItem; index++) {
+      li[index].style.display = "none";
+    }
   }
   score = 0;
   scroll(e) {
@@ -53,10 +59,15 @@ export class EmojiSelector extends LitElement {
       li[this.score - 1].style.display = "inline-block";
       this.score--;
     }
+
+    this.dispatchInput(this.score + 1);
   }
 
   render() {
-    return html` <div class="slider">
+    return html` <div
+      style="background-color:${this.color ? this.color : "#eeeeee"}"
+      class="slider"
+    >
       <ul class="slide_list">
         <li><img src="https://js.cx/carousel/1.png" /></li>
         <li><img src="https://js.cx/carousel/2.png" /></li>
@@ -79,6 +90,8 @@ export class EmojiSelector extends LitElement {
       .slider {
         /* background-color: #eeeeee; */
         position: relative;
+        border-radius: 15px;
+
         /* padding: 20px 13px; */
         /* border: 1px solid #cccccc; */
         overflow: none;

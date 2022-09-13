@@ -10,9 +10,6 @@ import { store } from "./store";
 export class WhenThen extends LitElement {
   _store = new StoreSubscriber(this, () => store);
 
-  // createRenderRoot() {
-  //   return this;
-  // }
   static get properties() {
     return {
       title: { type: String },
@@ -72,75 +69,131 @@ export class WhenThen extends LitElement {
   }
   render() {
     return html`
+      <table>
+        <tr>
+          <td colspan="2">
+            <h1>WHEN THEN meme</h1>
+            <h3>Zand.Games</h3>
+          </td>
+        </tr>
+        <tr class="when">
+          <td>
+            <emoji-selector
+              id="when"
+              @emoji_changed="${this.emoji_changed_when}"
+              selectedItem="8"
+            ></emoji-selector>
+          </td>
+          <td>
+            <div class="input-box">
+              <textarea
+                value=""
+                autofocus="autofocus"
+                id="txtwhen"
+                maxlength="155"
+                placeholder="you face a new opportunity."
+                @change="${this.whenchanged}"
+                style="background-color:${this._store.value.when_color}"
+              ></textarea>
+              <span class="unit">WHEN, </span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="tdcolor">
+            <color-mood
+              default="${this._store.value.when_color}"
+              @color_changed="${this.when_update_color}"
+            ></color-mood>
+          </td>
+        </tr>
+        <tr>
+          <td class="splitter"></td>
+        </tr>
+        <tr class="then">
+          <td>
+            <emoji-selector
+              id="then"
+              @emoji_changed="${this.emoji_changed_when}"
+              selectedItem="7"
+            ></emoji-selector>
+          </td>
+          <td>
+            <div class="input-box">
+              <textarea
+                value=""
+                autofocus="autofocus"
+                id="txtthen"
+                maxlength="155"
+                placeholder="don't jump immediately. Follow your needs."
+                @change="${this.thenchanged}"
+                style="background-color:${this._store.value.then_color}"
+              ></textarea>
+              <span class="unit">THEN, </span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="tdcolor">
+            <color-mood
+              default="${this._store.value.then_color}"
+              @color_changed="${this.then_update_color}"
+            ></color-mood>
+          </td>
+        </tr>
+      </table>
       <!-- Header -->
-      <div class="header">
-        <h1>WHEN THEN meme</h1>
-        <p><a target="_blank" href="http://zand.games/">Zand.Games</a></p>
-      </div>
-
-      <!-- The flexible grid (content) -->
-      <div class="row">
-        <div class="main">
-          <p class="when_title">WHEN</p>
-
-          <div class="flex-container">
-            <div class="flex-item-left">
-              <emoji-selector
-                id="when"
-                @emoji_changed="${this.emoji_changed_when}"
-              ></emoji-selector>
-            </div>
-            <div class="flex-item-right">
-              <color-mood
-                default="${this._store.value.when_color}"
-                @color_changed="${this.when_update_color}"
-              ></color-mood>
-            </div>
-          </div>
-
-          <textarea
-            class="text"
-            @change=${this.whenchanged}
-            style="background-color:${this._store.value.when_color}"
-          ></textarea>
-          <br />
-          <br />
-          <br />
-          <p class="then_title">THEN</p>
-          <div class="flex-container">
-            <div class="flex-item-left">
-              <emoji-selector
-                id="then"
-                @emoji_changed="${this.emoji_changed_then}"
-              ></emoji-selector>
-            </div>
-            <div class="flex-item-right">
-              <color-mood
-                default="${this._store.value.then_color}"
-                @color_changed="${this.then_update_color}"
-              ></color-mood>
-            </div>
-          </div>
-          <textarea
-            @change=${this.thenchanged}
-            class="text"
-            style="background-color:${this._store.value.then_color}"
-          ></textarea>
-
-          <!-- <div class="svgviewer">
-            <meme-svg></meme-svg>
-          </div> -->
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <!-- <div class="footer">
-        <h2>Footer</h2>
-      </div> -->
     `;
   }
 
   static get styles() {
-    return css``;
+    return css`
+      ::placeholder {
+        opacity: 0.4;
+      }
+      .splitter {
+        padding-top: 50px;
+      }
+      .tdcolor {
+        text-align: right;
+        margin-right: 1em;
+      }
+      table {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .input-box {
+        position: relative;
+        display: flex;
+        background-color: green;
+        height: 180px;
+        border-radius: 15px;
+      }
+
+      textarea {
+        resize: none;
+        border-radius: 15px;
+        font-size: 1.2em;
+        display: flex;
+        border: 1px solid #d7d6d6;
+        background: #fff;
+        width: 80%;
+        padding: 10px 10px 10px 65px;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif !important;
+      }
+      .unit {
+        position: absolute;
+        display: flex;
+        font-size: 1.2em;
+        color: black;
+        left: 5px;
+        top: 10px;
+        z-index: 9;
+        color: #656563;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif !important;
+      }
+    `;
   }
 }

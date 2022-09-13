@@ -37,18 +37,6 @@ export class ColorMood extends LitElement {
             sliderType: "saturation",
           },
         },
-        // {
-        //   component: iro.ui.Slider,
-        //   options: {
-        //     sliderType: "value",
-        //   },
-        // },
-        // {
-        //   component: iro.ui.Slider,
-        //   options: {
-        //     sliderType: "alpha",
-        //   },
-        // },
       ],
     });
     // add color:change listener
@@ -64,6 +52,15 @@ export class ColorMood extends LitElement {
 
   render() {
     return html` <div id="colorWheel"></div> `;
+  }
+
+  static get styles() {
+    return css`
+      .colorWheel {
+        align-items: right;
+        text-align: right;
+      }
+    `;
   }
 }
 
