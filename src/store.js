@@ -5,10 +5,10 @@ export class ThenWhenData {
     this.then_txt = "";
     this.when_txt = "";
 
-    this.then_face = "Laughing-Smiley-Face-Silhouette.svg";
-    this.when_face = "Laughing-Smiley-Face-Silhouette.svg";
+    this.when_face = "15";
+    this.then_face = "8";
 
-    this.when_color = "#f7ffebff";
+    this.when_color = "#d7ffc4ff";
     this.then_color = "#d9ddffff";
 
     this.city = "connection.png";

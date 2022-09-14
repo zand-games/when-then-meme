@@ -34,12 +34,11 @@ export class EmojiSelector extends LitElement {
     slider.firstElementChild.style.width = li.length * 150 + 50 + "px";
   }
   selectDefault() {
-    debugger;
     if (!this.selectedItem || this.selectedItem == 0) return;
-    this.score = this.selectedItem;
+    this.score = this.selectedItem - 1;
     var slider = this.shadowRoot.querySelector(".slider");
     var li = slider.querySelectorAll("ul li");
-    for (let index = 0; index < this.selectedItem; index++) {
+    for (let index = 0; index < this.score; index++) {
       li[index].style.display = "none";
     }
   }
@@ -69,16 +68,24 @@ export class EmojiSelector extends LitElement {
       class="slider"
     >
       <ul class="slide_list">
-        <li><img src="https://js.cx/carousel/1.png" /></li>
-        <li><img src="https://js.cx/carousel/2.png" /></li>
-        <li><img src="https://js.cx/carousel/3.png" /></li>
-        <li><img src="https://js.cx/carousel/4.png" /></li>
-        <li><img src="https://js.cx/carousel/5.png" /></li>
-        <li><img src="https://js.cx/carousel/6.png" /></li>
-        <li><img src="https://js.cx/carousel/7.png" /></li>
-        <li><img src="https://js.cx/carousel/8.png" /></li>
-        <li><img src="https://js.cx/carousel/9.png" /></li>
-        <li><img src="https://js.cx/carousel/10.png" /></li>
+        <li><img src="./assets/1.png" /></li>
+        <li><img src="./assets/2.png" /></li>
+        <li><img src="./assets/3.png" /></li>
+        <li><img src="./assets/4.png" /></li>
+        <li><img src="./assets/5.png" /></li>
+        <li><img src="./assets/6.png" /></li>
+        <li><img src="./assets/7.png" /></li>
+        <li><img src="./assets/8.png" /></li>
+        <li><img src="./assets/9.png" /></li>
+        <li><img src="./assets/10.png" /></li>
+        <li><img src="./assets/11.png" /></li>
+        <li><img src="./assets/12.png" /></li>
+        <li><img src="./assets/13.png" /></li>
+        <li><img src="./assets/14.png" /></li>
+        <li><img src="./assets/15.png" /></li>
+        <li><img src="./assets/16.png" /></li>
+        <li><img src="./assets/17.png" /></li>
+        <li><img src="./assets/18.png" /></li>
       </ul>
       <button class="arrow top" @click=${this.scroll}>⇧</button>
       <button class="arrow down" @click=${this.scroll}>⇩</button>

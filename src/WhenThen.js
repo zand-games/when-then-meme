@@ -73,7 +73,7 @@ export class WhenThen extends LitElement {
         <tr>
           <td colspan="2">
             <h1>WHEN THEN meme</h1>
-            <h3>Zand.Games</h3>
+            <h3><a href="http://zand.games/" target="_blank">Zand.Games</a></h3>
           </td>
         </tr>
         <tr class="when">
@@ -81,7 +81,7 @@ export class WhenThen extends LitElement {
             <emoji-selector
               id="when"
               @emoji_changed="${this.emoji_changed_when}"
-              selectedItem="8"
+              selectedItem="${this._store.value.when_face}"
             ></emoji-selector>
           </td>
           <td>
@@ -114,8 +114,8 @@ export class WhenThen extends LitElement {
           <td>
             <emoji-selector
               id="then"
-              @emoji_changed="${this.emoji_changed_when}"
-              selectedItem="7"
+              @emoji_changed="${this.emoji_changed_then}"
+              selectedItem="${this._store.value.then_face}"
             ></emoji-selector>
           </td>
           <td>
@@ -141,8 +141,15 @@ export class WhenThen extends LitElement {
             ></color-mood>
           </td>
         </tr>
+        <tr>
+          <td class="splitter" colspan="2"></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <meme-svg></meme-svg>
+          </td>
+        </tr>
       </table>
-      <!-- Header -->
     `;
   }
 

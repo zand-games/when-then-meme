@@ -28,6 +28,9 @@ export class MemeSVG extends LitElement {
               fill="${this._store.value.when_color}"
             />
             <ellipse
+              visibility="${this._store.value.when_face <= 10
+                ? "hidden"
+                : "visible"}"
               transform="rotate(180 202.692 223.66)"
               stroke="#000"
               y="43.67086"
@@ -47,6 +50,9 @@ export class MemeSVG extends LitElement {
               fill="${this._store.value.then_color}"
             />
             <ellipse
+              visibility="${this._store.value.then_face <= 10
+                ? "hidden"
+                : "visible"}"
               stroke="#000"
               ry="43.67086"
               rx="43.67086"
@@ -65,14 +71,14 @@ export class MemeSVG extends LitElement {
           ${this._store.value.then_txt}
         </text>
         <image
-          href="../assets/${this._store.value.when_face}"
+          href="../assets/${this._store.value.when_face}.png"
           x="160"
           y="185"
           height="80"
           width="80"
         />
         <image
-          href="../assets/${this._store.value.then_face}"
+          href="../assets/${this._store.value.then_face}.png"
           x="355"
           y="185"
           height="80"
