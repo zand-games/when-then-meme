@@ -105,17 +105,27 @@ export class MemeSVG extends LitElement {
               height="${this._store.value.when_face <= 10 ? "110" : "80"}"
               width="${this._store.value.when_face <= 10 ? "110" : "80"}" />
               
-              <text x="50" y="80" font-size="1.5em" style="fill:black">
-          When:
+
+              <defs>
+  <!-- define lines for text lies on -->
+  <path id="path1" d="m10,30l230,0m-230,30l230,0m-230,30l230,0m-230,30l230,0"></path>
+
+ </defs>
+ <use xlink:href="#path1" x="0" y="0"  />
+ <text transform="translate(120,50)" fill="#000" font-size="20">
+ <textPath xlink:href="#path1">${this._store.value.when_txt}</textPath>
+          
         </text>
-        <text x="100" y="105"  style="fill:black">
-          ${this._store.value.when_txt}
-        </text>
+        <text x="50" y="80" font-size="1.5em" style="fill:black">
+        When:
+      </text>
+      
         <text x="50" y="470" font-size="1.5em" style="fill:black">
        Then:
       </text>
-        <text x="100" y="500" style="fill:black">
-          ${this._store.value.then_txt}
+      <text transform="translate(120,440)" fill="#000" font-size="20">
+ <textPath xlink:href="#path1">${this._store.value.then_txt}</textPath>
+        
         </text>
       </svg>
     `;
