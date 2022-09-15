@@ -350,6 +350,72 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/export.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/meme-svg copy.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MemeSVG",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_store",
+              "default": "new StoreSubscriber(this, () => store)"
+            },
+            {
+              "kind": "method",
+              "name": "emoji_changed_when",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "emoji_changed_then",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "meme-svg",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MemeSVG",
+          "declaration": {
+            "name": "MemeSVG",
+            "module": "src/meme-svg copy.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "meme-svg",
+          "declaration": {
+            "name": "MemeSVG",
+            "module": "src/meme-svg copy.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/meme-svg.js",
       "declarations": [
         {
@@ -361,6 +427,42 @@
               "kind": "field",
               "name": "_store",
               "default": "new StoreSubscriber(this, () => store)"
+            },
+            {
+              "kind": "method",
+              "name": "emoji_changed_when",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "whenchanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "thenchanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "emoji_changed_then",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
             }
           ],
           "superclass": {
@@ -392,6 +494,52 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/meme-svgresult.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MemeSVGResult",
+          "members": [
+            {
+              "kind": "method",
+              "name": "createRenderRoot"
+            },
+            {
+              "kind": "field",
+              "name": "_store",
+              "default": "new StoreSubscriber(this, () => store)"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "meme-svgresult",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MemeSVGResult",
+          "declaration": {
+            "name": "MemeSVGResult",
+            "module": "src/meme-svgresult.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "meme-svgresult",
+          "declaration": {
+            "name": "MemeSVGResult",
+            "module": "src/meme-svgresult.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/store.js",
       "declarations": [
         {
@@ -401,19 +549,19 @@
           "members": [
             {
               "kind": "field",
-              "name": "then_txt",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\""
-            },
-            {
-              "kind": "field",
               "name": "when_txt",
               "type": {
                 "text": "string"
               },
-              "default": "\"\""
+              "default": "\"type here...\""
+            },
+            {
+              "kind": "field",
+              "name": "then_txt",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"type here...\""
             },
             {
               "kind": "field",
@@ -454,6 +602,38 @@
                 "text": "string"
               },
               "default": "\"connection.png\""
+            },
+            {
+              "kind": "field",
+              "name": "when_font",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Carter One\""
+            },
+            {
+              "kind": "field",
+              "name": "then_font",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Carter One\""
+            },
+            {
+              "kind": "field",
+              "name": "when_fontsize",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"19\""
+            },
+            {
+              "kind": "field",
+              "name": "then_fontsize",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"19\""
             }
           ]
         },
@@ -492,6 +672,146 @@
           "declaration": {
             "name": "WhenThen",
             "module": "/src/WhenThen.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/WhenThen copy 2.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WhenThen",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_store",
+              "default": "new StoreSubscriber(this, () => store)"
+            },
+            {
+              "kind": "method",
+              "name": "clicked",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "whenchanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "thenchanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "when_update_color",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "then_update_color",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "emoji_changed_when",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "emoji_changed_then",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "city_changed",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "fontChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "fontsizeChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"When Then meme\"",
+              "privacy": "public",
+              "attribute": "title"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "fieldName": "title"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "when-then",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WhenThen",
+          "declaration": {
+            "name": "WhenThen",
+            "module": "src/WhenThen copy 2.js"
           }
         }
       ]
@@ -701,6 +1021,57 @@
               "parameters": [
                 {
                   "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "fontChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "fontsizeChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "export_svg_to_img",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "resize_svg",
+              "parameters": [
+                {
+                  "name": "width"
+                },
+                {
+                  "name": "height"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "svg_textMultiline",
+              "parameters": [
+                {
+                  "name": "controlId"
+                },
+                {
+                  "name": "value"
                 }
               ]
             },

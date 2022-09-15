@@ -96,13 +96,13 @@ export class MemeSVGResult extends LitElement {
         </g>
      </g>
             <image
-              href="../assets/${this._store.value.then_face}.png"
+              href="./assets/${this._store.value.then_face}.png"
               x="312"
               y="${this._store.value.then_face <= 10 ? "255" : "265"}"
               height="${this._store.value.then_face <= 10 ? "110" : "80"}"
               width="${this._store.value.then_face <= 10 ? "110" : "80"}" />
               <image
-              href="../assets/${this._store.value.when_face}.png"
+              href="./assets/${this._store.value.when_face}.png"
               x="55"
               y="${this._store.value.when_face <= 10 ? "255" : "265"}"
               height="${this._store.value.when_face <= 10 ? "110" : "80"}"
