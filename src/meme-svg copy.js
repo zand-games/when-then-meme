@@ -19,19 +19,6 @@ export class MemeSVG extends LitElement {
       return val;
     });
   }
-  whenchanged(e) {
-    store.update((val) => {
-      val.when_txt = e.target.value;
-      return val;
-    });
-  }
-  thenchanged(e) {
-    //console.log(e.target.value);
-    store.update((val) => {
-      val.then_txt = e.target.value;
-      return val;
-    });
-  }
   emoji_changed_then(e) {
     store.update((val) => {
       val.then_face = e.detail;
@@ -77,15 +64,26 @@ export class MemeSVG extends LitElement {
            </g>
           
 
-       
-           <path style="display:inline;fill:${this._store.value.then_color};fill-opacity:1;stroke-width:1.10565"
+           <circle stroke="#000000" id="svg_4" cy="264.56018" cx="361.67255" fill="${
+             this._store.value.then_color
+           }" r="43.67086" visibility="${
+      this._store.value.then_face <= 10 ? "hidden" : "visible"
+    }"/>
+           <path style="display:inline;fill:${
+             this._store.value.then_color
+           };fill-opacity:1;stroke-width:1.10565"
               d="m 208.96806,587.00803 c -2.73649,-0.22857 -11.94103,-0.95185 -20.45455,-1.60728 -44.85426,-3.4532 -95.8594,-14.12965 -118.485468,-24.80151 -36.49089,-17.21138 -54.578735,-41.23873 -50.164008,-66.63637 3.151803,-18.13212 17.843984,-43.15367 31.016977,-52.82354 15.437415,-11.3321 40.301986,-18.86679 83.476949,-25.29595 85.94382,-12.79784 167.72455,-9.72945 223.93244,8.40189 11.22357,3.62046 14.644,4.34394 15.32532,3.24156 0.59307,-0.95962 2.11739,-1.18643 4.7077,-0.70048 3.71048,0.69609 3.87232,0.57961 5.15832,-3.7127 3.26774,-10.90674 3.9926,-28.08823 1.68607,-39.96554 -0.43927,-2.26208 0.59868,-1.55922 5.71468,3.86978 17.90566,19.00109 31.07745,47.3144 35.49125,76.28992 0.92632,6.08108 2.45198,14.29054 3.39035,18.24325 9.90118,41.707 -9.77564,73.04909 -56.05402,89.28527 -29.66638,10.40807 -69.88026,15.61227 -125.4914,16.24023 -18.85135,0.21288 -36.51412,0.20004 -39.25061,-0.0285 z"
               id="path2996" transform="translate(9.3980344,-37.592138)" />
         </g>
         <g id="when" transform="translate(-106.61425,78.810811)">
          
-        
-           <path style="display:inline;fill:${this._store.value.when_color};fill-opacity:1;stroke-width:1.10565"
+           <!-- <circle transform="rotate(180,202.692,223.66)" stroke="#000000" id="svg_19" cy="223.65982" cx="202.69171"
+              fill="${this._store.value.when_color}" r="43.67086" visibility="${
+      this._store.value.when_face <= 10 ? "hidden" : "visible"
+    }"/> -->
+           <path style="display:inline;fill:${
+             this._store.value.when_color
+           };fill-opacity:1;stroke-width:1.10565"
               d="M 38.495223,216.61576 C 27.033976,192.51028 22.113022,171.6143 22.113022,147.0516 c 0,-24.5257 5.202908,-45.73431 16.72,-68.155716 7.389477,-14.385791 13.553987,-22.617489 22.140761,-29.565371 17.397598,-14.077052 38.76493,-20.68936 87.736287,-27.150762 39.99363,-5.276858 64.0317,-6.094014 115.54054,-3.927716 65.51895,2.755518 86.76128,5.759389 112.22679,15.869957 18.30132,7.26617 37.98634,21.742268 43.15355,31.734544 11.40796,22.06057 9.8187,50.163544 -4.0404,71.446644 -5.17217,7.94278 -19.82054,22.34611 -28.66508,28.18557 -25.2423,16.66581 -60.36692,27.03719 -104.98444,30.99918 -24.51732,2.17711 -102.45661,1.82143 -128.25553,-0.58529 -27.25128,-2.54222 -61.530565,-6.90086 -75.365911,-9.58284 -10.027574,-1.94384 -11.354751,-1.99527 -12.460719,-0.48276 -1.006826,1.37691 -2.12711,1.49298 -6.003528,0.62201 -4.695128,-1.05493 -4.787618,-1.01838 -6.243892,2.46698 -2.350675,5.62595 -5.991203,20.84458 -7.481223,31.27401 l -1.370334,9.59167 z"
               id="path5289" transform="translate(106.61425,-78.810811)" />
            <g id="g1823" transform="matrix(-1.0636037,0,0,-0.84906747,601.56019,309.30014)">
@@ -114,7 +112,12 @@ export class MemeSVG extends LitElement {
            </g>
         </g>
      </g>                   
- <foreignObject x="10" y="235" width="290" height="150">
+  <defs>
+  <!-- define lines for text lies on -->
+  <path id="path1" d="m10,30l230,0m-230,30l230,0m-230,30l230,0m-230,30l230,0"></path>
+
+ </defs>
+ <foreignObject x="10" y="215" width="290" height="150">
            <emoji-selector
               id="when"              
               selectedItem="${this._store.value.when_face}"
@@ -133,11 +136,11 @@ export class MemeSVG extends LitElement {
         When,
       </text>
       
-        <text x="50" y="470" font-family="Carter One"  font-size="1.5em" style="fill:black">
+        <text x="50" y="470" Carter One font-size="1.5em" style="fill:black">
        Then,
       </text>      
      
-      <foreignObject x="125" y="57" width="290" height="150">
+      <foreignObject x="120" y="40" width="290" height="150">
         <div 
           xmlns="http://www.w3.org/1999/xhtml"
           style="
@@ -146,16 +149,16 @@ export class MemeSVG extends LitElement {
             font-size: 20px;
             overflow: none; 
             border-radius: 15px;
-            background-color:transparent;            
+            background-color:red;            
             font-family:Caveat;">
           <!-- <p>${this._store.value.when_txt}</p> -->
           <textarea xmlns="http://www.w3.org/1999/xhtml"
           placeholder="${this._store.value.when_txt}"
-          @change="${this.whenchanged}"
           style="width:285px;
           height:140px;
           border:none;resize:none;
-          background: transparent;          
+          background: transparent;
+          
           border:0; border-radius: 15px;
           font-family:${this._store.value.when_font};
           font-size:${this._store.value.when_fontsize}px;
@@ -164,7 +167,7 @@ export class MemeSVG extends LitElement {
         </div>
       </foreignObject>
       <foreignObject
-        x="115" y="447" width="290" height="150"
+        x="120" y="430" width="290" height="150"
       >
         <div
           xmlns="http://www.w3.org/1999/xhtml"
@@ -177,18 +180,7 @@ export class MemeSVG extends LitElement {
             font-family:Comfortaa;
           "
         >
-        <textarea xmlns="http://www.w3.org/1999/xhtml"
-          placeholder="${this._store.value.then_txt}"
-          @change="${this.thenchanged}"
-          style="width:285px;
-          height:140px;
-          border:none;resize:none;
-          background: transparent;                    
-          border:0; border-radius: 15px;
-          font-family:${this._store.value.when_font};
-          font-size:${this._store.value.when_fontsize}px;
-          "
-          ></textarea>          
+          <p>${this._store.value.then_txt}</p>                  
         </div>
       </foreignObject>
       </svg>     

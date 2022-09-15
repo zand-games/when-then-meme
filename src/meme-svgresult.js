@@ -1,59 +1,32 @@
 import { LitElement, html, css } from "lit";
 import { store } from "./store";
 import { StoreSubscriber } from "lit-svelte-stores";
-import "./emoji-selector";
-export class MemeSVG extends LitElement {
+export class MemeSVGResult extends LitElement {
   constructor() {
     super();
   }
-  //   createRenderRoot() {
-  //     return this;
-  //   }
+  createRenderRoot() {
+    return this;
+  }
   firstUpdated() {
     super.firstUpdated();
   }
   _store = new StoreSubscriber(this, () => store);
-  emoji_changed_when(e) {
-    store.update((val) => {
-      val.when_face = e.detail;
-      return val;
-    });
-  }
-  whenchanged(e) {
-    store.update((val) => {
-      val.when_txt = e.target.value;
-      return val;
-    });
-  }
-  thenchanged(e) {
-    //console.log(e.target.value);
-    store.update((val) => {
-      val.then_txt = e.target.value;
-      return val;
-    });
-  }
-  emoji_changed_then(e) {
-    store.update((val) => {
-      val.then_face = e.detail;
-      return val;
-    });
-  }
+
   render() {
-    return html`
+    return html`   
       <svg
+      id="hedosvg"
         width="100%"
         height="100%"
         xmlns="http://www.w3.org/2000/svg"
         viewbox="0 0 450 600">
-       
         <g>
-         
         <g id="g24">
         <g id="then" transform="translate(-9.3980344,37.592138)">
-           <g id="g1677" transform="matrix(-1.5316635,0,0,-1.4860372,745.73204,602.07665)">
+           <g  id="g1677" transform="matrix(-1.5316635,0,0,-1.4860372,745.73204,602.07665)">
               <g id="g669" transform="matrix(0.77669541,0,0,-0.56671342,241.82663,190.41321)">
-              
-              <path
+                 <path
                     d="m 0,0 c -30.885,30.702 -45.668,74.068 -51.548,116.399 -0.866,6.235 -1.488,12.508 -1.89,18.789 -0.491,7.677 -2.134,15.09 -3,22.747 -2.944,26.008 0.846,53.549 16.667,75.041 15.798,21.461 41.366,32.701 66.576,38.615 20.713,4.86 42.406,7.242 63.661,8.09 33.856,1.351 68.218,-2.358 100.988,-10.952 30.62,-8.03 62.321,-21.126 84.143,-44.881 9.79,-10.657 16.673,-23.629 19.561,-37.827 3.356,-16.486 0.588,-33.563 -4.771,-49.301 -3.334,-9.789 -7.882,-19.13 -12.948,-28.128 -6.247,-11.1 -15.767,-18.582 -26.893,-24.482 -11.147,-5.911 -23.312,-9.688 -35.432,-13.02 -15.099,-4.152 -30.406,-7.54 -45.84,-10.187 -30.472,-5.225 -61.298,-6.574 -92.079,-3.652 -29.199,2.772 -58.52,9.728 -83.993,24.69 -0.805,0.473 -1.991,0.055 -2.203,-0.897 -5.972,-26.731 -4.242,-57.432 6.645,-82.861 0.76,-1.774 3.343,-0.245 2.591,1.513 -10.266,23.979 -12.116,54.708 -6.343,80.551 L -8.312,79.35 c 24.047,-14.124 51.256,-21.014 78.75,-24.368 29.454,-3.593 59.097,-2.79 88.451,1.29 28.067,3.902 57.214,9.84 83.484,20.733 10.416,4.319 20.4,9.945 28.546,17.823 7.702,7.447 12.471,17.821 16.878,27.43 13.19,28.752 17.234,61.832 0.319,89.92 -15.576,25.866 -44.001,41.562 -71.486,51.785 -31.896,11.865 -66.293,17.34 -100.202,18.692 -16.114,0.642 -32.173,0.021 -48.203,-1.669 -24.161,-2.546 -48.522,-6.068 -70.944,-15.879 -22.271,-9.743 -40.71,-26.735 -50.113,-49.323 -9.609,-23.082 -8.928,-49.571 -4.145,-73.677 0.886,-4.463 0.667,-9.304 1.076,-13.842 0.645,-7.14 1.605,-14.253 2.785,-21.324 3.294,-19.73 8.753,-39.102 16.646,-57.491 C -28.271,30.349 -16.893,12.563 -2.121,-2.121 -0.748,-3.486 1.374,-1.365 0,0"
                     style="fill:#737982;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path671" />
               </g>
@@ -75,20 +48,28 @@ export class MemeSVG extends LitElement {
                  </g>
               </g>
            </g>
-          
-
-       
-           <path style="display:inline;fill:${this._store.value.then_color};fill-opacity:1;stroke-width:1.10565"
+           <circle stroke="#000000" id="svg_4" cy="264.56018" cx="361.67255" fill="${
+             this._store.value.then_color
+           }" r="43.67086" display="${
+      this._store.value.then_face <= 10 ? "none" : "inline"
+    }"/>
+           <path style="display:inline;fill:${
+             this._store.value.then_color
+           };fill-opacity:1;stroke-width:1.10565"
               d="m 208.96806,587.00803 c -2.73649,-0.22857 -11.94103,-0.95185 -20.45455,-1.60728 -44.85426,-3.4532 -95.8594,-14.12965 -118.485468,-24.80151 -36.49089,-17.21138 -54.578735,-41.23873 -50.164008,-66.63637 3.151803,-18.13212 17.843984,-43.15367 31.016977,-52.82354 15.437415,-11.3321 40.301986,-18.86679 83.476949,-25.29595 85.94382,-12.79784 167.72455,-9.72945 223.93244,8.40189 11.22357,3.62046 14.644,4.34394 15.32532,3.24156 0.59307,-0.95962 2.11739,-1.18643 4.7077,-0.70048 3.71048,0.69609 3.87232,0.57961 5.15832,-3.7127 3.26774,-10.90674 3.9926,-28.08823 1.68607,-39.96554 -0.43927,-2.26208 0.59868,-1.55922 5.71468,3.86978 17.90566,19.00109 31.07745,47.3144 35.49125,76.28992 0.92632,6.08108 2.45198,14.29054 3.39035,18.24325 9.90118,41.707 -9.77564,73.04909 -56.05402,89.28527 -29.66638,10.40807 -69.88026,15.61227 -125.4914,16.24023 -18.85135,0.21288 -36.51412,0.20004 -39.25061,-0.0285 z"
               id="path2996" transform="translate(9.3980344,-37.592138)" />
         </g>
         <g id="when" transform="translate(-106.61425,78.810811)">
-         
-        
-           <path style="display:inline;fill:${this._store.value.when_color};fill-opacity:1;stroke-width:1.10565"
+           <circle transform="rotate(180,202.692,223.66)" stroke="#000000" id="svg_19" cy="223.65982" cx="202.69171"
+              fill="${this._store.value.when_color}" r="43.67086" display="${
+      this._store.value.when_face <= 10 ? "none" : "inline"
+    }"/>
+           <path style="display:inline;fill:${
+             this._store.value.when_color
+           };fill-opacity:1;stroke-width:1.10565"
               d="M 38.495223,216.61576 C 27.033976,192.51028 22.113022,171.6143 22.113022,147.0516 c 0,-24.5257 5.202908,-45.73431 16.72,-68.155716 7.389477,-14.385791 13.553987,-22.617489 22.140761,-29.565371 17.397598,-14.077052 38.76493,-20.68936 87.736287,-27.150762 39.99363,-5.276858 64.0317,-6.094014 115.54054,-3.927716 65.51895,2.755518 86.76128,5.759389 112.22679,15.869957 18.30132,7.26617 37.98634,21.742268 43.15355,31.734544 11.40796,22.06057 9.8187,50.163544 -4.0404,71.446644 -5.17217,7.94278 -19.82054,22.34611 -28.66508,28.18557 -25.2423,16.66581 -60.36692,27.03719 -104.98444,30.99918 -24.51732,2.17711 -102.45661,1.82143 -128.25553,-0.58529 -27.25128,-2.54222 -61.530565,-6.90086 -75.365911,-9.58284 -10.027574,-1.94384 -11.354751,-1.99527 -12.460719,-0.48276 -1.006826,1.37691 -2.12711,1.49298 -6.003528,0.62201 -4.695128,-1.05493 -4.787618,-1.01838 -6.243892,2.46698 -2.350675,5.62595 -5.991203,20.84458 -7.481223,31.27401 l -1.370334,9.59167 z"
               id="path5289" transform="translate(106.61425,-78.810811)" />
-           <g id="g1823" transform="matrix(-1.0636037,0,0,-0.84906747,601.56019,309.30014)">
+           <g  id="g1823" transform="matrix(-1.0636037,0,0,-0.84906747,601.56019,309.30014)">
               <g id="g645" transform="matrix(1.0864835,0,0,1.2121633,58.600889,343.62231)">
                  <path
                     d="m 0,0 c 2.577,21.59 13.911,39.642 31.748,51.924 16.773,11.549 37.106,17.264 57.003,20.441 10.331,1.649 20.765,2.373 31.212,2.709 16.232,0.522 32.435,1.737 48.663,2.375 31.899,1.255 63.707,-1.874 95.075,-7.689 14.534,-2.696 30.064,-5.994 43.307,-12.766 12.169,-6.223 21.935,-16.753 29.18,-28.165 7.472,-11.771 13.307,-25.015 17.48,-38.285 14.133,-44.949 6.341,-92.572 -16.248,-133.363 -3.4,-6.139 -7.173,-12.066 -11.118,-17.866 0.913,-0.384 1.827,-0.77 2.741,-1.155 1.374,5.721 1.524,11.852 1.542,17.696 0.05,16.868 -3.313,33.683 -8.241,49.748 -0.239,0.778 -1.041,1.273 -1.845,1.047 -14.377,-4.029 -29.761,-5.846 -44.521,-7.928 -16.081,-2.268 -32.257,-3.844 -48.462,-4.888 -31.547,-2.032 -63.253,-1.621 -94.735,1.225 C 88.09,-100.9 37.295,-89.742 11.094,-49.264 1.594,-34.587 -1.782,-17.264 0,0 0.198,1.924 -2.804,1.904 -3,0 -5.116,-20.498 0.204,-40.714 12.916,-57.044 25.47,-73.172 43.007,-84.822 61.703,-92.71 c 22.158,-9.349 45.41,-12.745 69.199,-15.054 31.463,-3.054 63.175,-3.363 94.72,-1.517 15.857,0.927 31.689,2.475 47.429,4.602 15.988,2.16 32.682,4.075 48.245,8.438 -0.614,0.348 -1.23,0.698 -1.845,1.048 4.772,-15.555 7.9,-31.586 8.128,-47.89 0.082,-5.907 -0.04,-12.175 -1.429,-17.96 -0.408,-1.699 1.793,-2.55 2.742,-1.155 27.422,40.309 41.353,88.251 31.939,136.713 -2.77,14.261 -7.569,28.166 -14.057,41.161 -9.338,18.704 -21.556,35.934 -40.918,45.229 -12.768,6.13 -27.535,9.105 -41.357,11.747 -14.487,2.77 -29.163,4.483 -43.807,6.171 -32.309,3.726 -64.488,0.727 -96.84,-0.605 C 85.524,76.639 41.475,71.195 14.439,40.697 4.338,29.303 -1.209,15.003 -3,0 -3.229,-1.918 -0.227,-1.896 0,0"
@@ -113,87 +94,42 @@ export class MemeSVG extends LitElement {
               </g>
            </g>
         </g>
-     </g>                   
- <foreignObject x="10" y="235" width="290" height="150">
-           <emoji-selector
-              id="when"              
-              selectedItem="${this._store.value.when_face}"
-              @emoji_changed="${this.emoji_changed_when}"
-            ></emoji-selector>
-      </foreignObject>
-        <foreignObject x="300" y="210" width="290" height="150">
-           <emoji-selector
-              id="then"              
-              @emoji_changed="${this.emoji_changed_then}"
-              selectedItem="${this._store.value.then_face}"
-            ></emoji-selector>
-      </foreignObject>    
+     </g>
+            <image
+              href="../assets/${this._store.value.then_face}.png"
+              x="312"
+              y="${this._store.value.then_face <= 10 ? "255" : "265"}"
+              height="${this._store.value.then_face <= 10 ? "110" : "80"}"
+              width="${this._store.value.then_face <= 10 ? "110" : "80"}" />
+              <image
+              href="../assets/${this._store.value.when_face}.png"
+              x="55"
+              y="${this._store.value.when_face <= 10 ? "255" : "265"}"
+              height="${this._store.value.when_face <= 10 ? "110" : "80"}"
+              width="${this._store.value.when_face <= 10 ? "110" : "80"}" />
+              <defs>
+  <!-- define lines for text lies on -->
+  <path id="path1" d="m10,30l230,0m-230,30l230,0m-230,30l230,0m-230,30l230,0"></path>
+
+ </defs>
  <use xlink:href="#path1" x="0" y="0"  />
+ 
         <text x="50" y="80" font-family="Carter One" font-size="1.5em" style="fill:black">
         When,
       </text>
-      
-        <text x="50" y="470" font-family="Carter One"  font-size="1.5em" style="fill:black">
+      <text font-family="${
+        this._store.value.when_font
+      }" id="svgwhentext"  transform="translate(125,55)" fill="#000" font-size="19">           
+        </text>
+        <text x="50" y="470" font-family="Carter One" font-size="1.5em" style="fill:black">
        Then,
-      </text>      
-     
-      <foreignObject x="125" y="57" width="290" height="150">
-        <div 
-          xmlns="http://www.w3.org/1999/xhtml"
-          style="
-            width: 100%; height: 100%;
-            border: none;
-            font-size: 20px;
-            overflow: none; 
-            border-radius: 15px;
-            background-color:transparent;            
-            font-family:Caveat;">
-          <!-- <p>${this._store.value.when_txt}</p> -->
-          <textarea xmlns="http://www.w3.org/1999/xhtml"
-          placeholder="${this._store.value.when_txt}"
-          @change="${this.whenchanged}"
-          style="width:285px;
-          height:140px;
-          border:none;resize:none;
-          background: transparent;          
-          border:0; border-radius: 15px;
-          font-family:${this._store.value.when_font};
-          font-size:${this._store.value.when_fontsize}px;
-          "
-          ></textarea>
-        </div>
-      </foreignObject>
-      <foreignObject
-        x="115" y="447" width="290" height="150"
-      >
-        <div
-          xmlns="http://www.w3.org/1999/xhtml"
-          style="
-            width: 100%; height: 100%;
-            border: none;
-            font-size: 20px;
-            overflow: none; 
-            background-color:transparent;
-            font-family:Comfortaa;
-          "
-        >
-        <textarea xmlns="http://www.w3.org/1999/xhtml"
-          placeholder="${this._store.value.then_txt}"
-          @change="${this.thenchanged}"
-          style="width:285px;
-          height:140px;
-          border:none;resize:none;
-          background: transparent;                    
-          border:0; border-radius: 15px;
-          font-family:${this._store.value.when_font};
-          font-size:${this._store.value.when_fontsize}px;
-          "
-          ></textarea>          
-        </div>
-      </foreignObject>
-      </svg>     
+      </text>
+      <text font-family="${
+        this._store.value.when_font
+      }" id="svgthentext" transform="translate(118,445)" fill="#000" font-size="19">     
+        </text>
+      </svg>
     `;
   }
 }
-
-customElements.define("meme-svg", MemeSVG);
+customElements.define("meme-svgresult", MemeSVGResult);

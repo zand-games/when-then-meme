@@ -417,19 +417,19 @@
             },
             {
               "kind": "field",
-              "name": "then_face",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Laughing-Smiley-Face-Silhouette.svg\""
-            },
-            {
-              "kind": "field",
               "name": "when_face",
               "type": {
                 "text": "string"
               },
-              "default": "\"Laughing-Smiley-Face-Silhouette.svg\""
+              "default": "\"15\""
+            },
+            {
+              "kind": "field",
+              "name": "then_face",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"8\""
             },
             {
               "kind": "field",
@@ -437,7 +437,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"#f7ffebff\""
+              "default": "\"#d7ffc4ff\""
             },
             {
               "kind": "field",

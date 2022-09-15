@@ -1,12 +1,11 @@
 import { LitElement, html, css } from "lit";
 import { StoreSubscriber } from "lit-svelte-stores";
-import { Canvg } from "https://cdn.skypack.dev/canvg";
+
 import "./city-selector";
 import "./color-mood";
 import "./emoji-selector";
 import "./meme-svg";
 import "./store";
-import "./meme-svgresult";
 import { store } from "./store";
 export class WhenThen extends LitElement {
   _store = new StoreSubscriber(this, () => store);
@@ -89,6 +88,31 @@ export class WhenThen extends LitElement {
             <h3><a href="http://zand.games/" target="_blank">Zand.Games</a></h3>
           </td>
         </tr>
+        <tr class="when">
+          <td>
+            <emoji-selector
+              id="when"
+              @emoji_changed="${this.emoji_changed_when}"
+              selectedItem="${this._store.value.when_face}"
+            ></emoji-selector>
+          </td>
+          <td>
+            <div class="input-box">
+              <textarea
+                value=""
+                autofocus="autofocus"
+                id="txtwhen"
+                maxlength="135"
+                placeholder="${this._store.value.when_txt}"
+                @change="${this.whenchanged}"
+                style="background-color:${this._store.value
+                  .when_color};font-family:${this._store.value
+                  .when_font};font-size:${this._store.value.when_fontsize}px"
+              ></textarea>
+              <span class="unit">WHEN, </span>
+            </div>
+          </td>
+        </tr>
         <tr>
           <td colspan="2" class="tdcolor">
             <color-mood
@@ -98,8 +122,58 @@ export class WhenThen extends LitElement {
           </td>
         </tr>
         <tr>
-          <td colspan="2">
-            <meme-svg></meme-svg>
+          <td>
+            <select
+              id="inputState"
+              class="form-control"
+              @change="${this.fontChanged}"
+            >
+              <option value="Comfortaa" selected>Font</option>
+              <option value="Comfortaa">Comfortaa</option>
+              <option value="Caveat">Caveat</option>
+              <option value="Carter One">Carter One</option>
+            </select>
+            <select
+              id="inputState"
+              class="form-control"
+              @change="${this.fontsizeChanged}"
+            >
+              <option value="0" selected>Size</option>
+              <option value="10">10</option>
+              <option value="12">12</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="18">18</option>
+              <option value="20">20</option>
+              <option value="22">22</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="splitter"></td>
+        </tr>
+        <tr class="then">
+          <td>
+            <emoji-selector
+              id="then"
+              @emoji_changed="${this.emoji_changed_then}"
+              selectedItem="${this._store.value.then_face}"
+            ></emoji-selector>
+          </td>
+          <td>
+            <div class="input-box">
+              <textarea
+                value=""
+                autofocus="autofocus"
+                id="txtthen"
+                maxlength="135"
+                placeholder="${this._store.value.then_txt}"
+                @change="${this.thenchanged}"
+                style="background-color:${this._store.value.then_color}"
+              ></textarea>
+              <span class="unit">THEN, </span>
+            </div>
           </td>
         </tr>
         <tr>
@@ -111,91 +185,19 @@ export class WhenThen extends LitElement {
           </td>
         </tr>
         <tr>
-          <td class="btncontainer" colspan="2">
-            <button
-              class="button instagram"
-              id="insta_story"
-              @click="${this.export_svg_to_img}"
-              value="export for instagram story"
-            >
-              Download Meme
-            </button>
-          </td>
+          <td class="splitter" colspan="2"></td>
         </tr>
         <tr>
           <td colspan="2">
-            <meme-svgresult
-              style="visibility:hidden !important"
-            ></meme-svgresult>
+            <meme-svg></meme-svg>
           </td>
         </tr>
       </table>
-
-      <canvas style="visibility:hidden;" id="myCanvas"></canvas>
-      <div style="text-align:center;">
-        <a id="link"></a>
-      </div>
     `;
   }
-  async export_svg_to_img(e) {
-    this.svg_textMultiline("svgwhentext", this._store.value.when_txt);
-    this.svg_textMultiline("svgthentext", this._store.value.then_txt);
 
-    const canvas = this.shadowRoot.querySelector("canvas");
-    const svg = this.shadowRoot.getElementById("svgresult");
-    let svg_content = "";
-
-    svg_content = this.resize_svg("1080", "1920");
-    const ctx = canvas.getContext("2d");
-
-    let v = Canvg.fromString(ctx, svg_content);
-
-    v.start();
-    await new Promise((r) => setTimeout(r, 2000));
-
-    var link = this.shadowRoot.getElementById("link");
-    link.style.display = "none";
-    link.setAttribute("download", "when-then-meme.png");
-    link.setAttribute(
-      "href",
-      canvas.toDataURL("image/png").replace("image/png", "image/octet-stream")
-    );
-    link.click();
-    v.stop();
-  }
-
-  resize_svg(width, height) {
-    const svg = this.shadowRoot.getElementById("hedosvg");
-    var cloned_svg = svg.cloneNode(true);
-    cloned_svg.setAttribute("width", width);
-    cloned_svg.setAttribute("height", height);
-    var s = new XMLSerializer();
-    var str = s.serializeToString(cloned_svg);
-
-    return str;
-  }
   static get styles() {
     return css`
-      .button {
-        margin: 5px;
-        border: none;
-        color: white;
-        background-color: rgb(92, 102, 108);
-        padding: 10px 25px;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 15px;
-        font-size: 16px;
-      }
-      button:hover {
-        opacity: 0.8;
-        cursor: pointer;
-      }
-      .btncontainer {
-        padding-top: 1.5em;
-        text-align: center;
-      }
-
       ::placeholder {
         opacity: 0.4;
       }
@@ -248,43 +250,5 @@ export class WhenThen extends LitElement {
           "Lucida Grande", "Lucida Sans", Arial, sans-serif !important;
       }
     `;
-  }
-
-  svg_textMultiline(controlId, value) {
-    var x = 0;
-    var y = 25;
-    var width = 200;
-    var lineHeight = 20;
-
-    /* get the text */
-    var element = this.shadowRoot.getElementById(controlId);
-    var text = value; //element.innerHTML;
-
-    /* split the words into array */
-    var words = text.split(" ");
-    var line = "";
-
-    /* Make a tspan for testing */
-    element.innerHTML = '<tspan id="PROCESSING">busy</tspan >';
-
-    for (var n = 0; n < words.length; n++) {
-      var testLine = line + words[n] + " ";
-      var testElem = this.shadowRoot.getElementById("PROCESSING");
-      /*  Add line in testElement */
-      testElem.innerHTML = testLine;
-      /* Messure textElement */
-      var metrics = testElem.getBoundingClientRect();
-      let testWidth = metrics.width;
-
-      if (testWidth > width && n > 0) {
-        element.innerHTML += '<tspan x="0" dy="' + y + '">' + line + "</tspan>";
-        line = words[n] + " ";
-      } else {
-        line = testLine;
-      }
-    }
-
-    element.innerHTML += '<tspan x="0" dy="' + y + '">' + line + "</tspan>";
-    this.shadowRoot.getElementById("PROCESSING").remove();
   }
 }
