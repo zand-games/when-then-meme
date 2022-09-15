@@ -127,7 +127,16 @@ export class MemeSVGResult extends LitElement {
       <text font-family="${
         this._store.value.when_font
       }" id="svgthentext" transform="translate(118,445)" fill="#000" font-size="19">     
-        </text>
+        </text>      
+        <g id="footer_zand" transform="translate(0,0)">
+            <text
+              style="fill: #656563; font-family: 'Comfortaa', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 13px;"
+              x="70"
+              y="230"
+            >
+              Zand.Games
+            </text>
+          </g>
       </svg>
     `;
   }

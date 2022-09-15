@@ -151,7 +151,7 @@ export class WhenThen extends LitElement {
     let v = Canvg.fromString(ctx, svg_content);
 
     v.start();
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 1000));
 
     var link = this.shadowRoot.getElementById("link");
     link.style.display = "none";
