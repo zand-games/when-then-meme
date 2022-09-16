@@ -6,7 +6,7 @@ export class ThenWhenData {
     this.then_txt = "type here...";
 
     this.when_face = "15";
-    this.then_face = "8";
+    this.then_face = "24";
 
     this.when_color = "#d7ffc4ff";
     this.then_color = "#d9ddffff";

@@ -11,7 +11,8 @@
     "start": "web-dev-server"
   },
   "dependencies": {
-    "lit": "^2.0.2"
+    "lit": "^2.0.2",
+    "read-directory": "^3.0.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",
@@ -24,11 +25,11 @@
     "@web/rollup-plugin-import-meta-assets": "^1.0.7",
     "babel-plugin-template-html-minifier": "^4.1.0",
     "deepmerge": "^4.2.2",
+    "lit-svelte-stores": "^0.1.7",
     "rimraf": "^3.0.2",
     "rollup": "^2.60.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-workbox": "^6.2.0",
-    "lit-svelte-stores": "^0.1.7",
     "svelte": "^3.48.0"
   },
   "customElements": "custom-elements.json"

@@ -6,6 +6,7 @@ export class EmojiSelector extends LitElement {
       id: { type: String },
       color: { type: String },
       selectedItem: { type: Number },
+      selectedCategory: { type: String },
     };
   }
   dispatchInput(Value) {
@@ -21,11 +22,12 @@ export class EmojiSelector extends LitElement {
   // }
   constructor() {
     super();
+    this.selectedCategory = "emoji";
   }
   firstUpdated() {
     super.firstUpdated();
     this.script();
-    this.selectDefault();
+    // this.selectDefault();
   }
   //li = slider.querySelectorAll("ul li")
   script() {
@@ -51,7 +53,7 @@ export class EmojiSelector extends LitElement {
       if (li[this.score].nextElementSibling == null) {
         li.forEach((item) => (item.style.display = "inline-block"));
         this.score = 0;
-        this.dispatchInput(this.score + 1);
+        this.dispatchInput(li[this.score + 1].id);
         return;
       }
       li[this.score].style.display = "none";
@@ -63,39 +65,29 @@ export class EmojiSelector extends LitElement {
         li.forEach((item) => (item.style.display = "none"));
         this.score = li.length - 1;
         li[this.score].style.display = "inline-block";
-        this.dispatchInput(this.score + 1);
+        this.dispatchInput(li[this.score + 1].id);
 
         return;
       }
       li[this.score - 1].style.display = "inline-block";
       this.score--;
     }
-
-    this.dispatchInput(this.score + 1);
+    debugger;
+    this.dispatchInput(li[this.score + 1].id);
   }
-
+  dictionary = {
+    crypto: ["50", "51", "52"],
+    animals: ["19", "20", "21", "22"],
+    emoji: ["1", "2", "3", "4", "5", "6"],
+  };
   render() {
     return html` <div style="background-color:transparent" class="slider">
       <ul class="slide_list">
-        <li><img src="./assets/1.png" /></li>
-        <li><img src="./assets/2.png" /></li>
-        <li><img src="./assets/3.png" /></li>
-        <li><img src="./assets/4.png" /></li>
-        <li><img src="./assets/5.png" /></li>
-        <li><img src="./assets/6.png" /></li>
-        <li><img src="./assets/7.png" /></li>
-        <li><img src="./assets/8.png" /></li>
-        <li><img src="./assets/9.png" /></li>
-        <li><img src="./assets/10.png" /></li>
-        <li><img src="./assets/11.png" /></li>
-        <li><img src="./assets/12.png" /></li>
-        <li><img src="./assets/13.png" /></li>
-        <li><img src="./assets/14.png" /></li>
-        <li><img src="./assets/15.png" /></li>
-        <li><img src="./assets/16.png" /></li>
-        <li><img src="./assets/17.png" /></li>
-        <li><img src="./assets/18.png" /></li>
+        ${this.dictionary[this.selectedCategory].map(
+          (i) => html`<li id="${i}"><img src="./assets/${i}.png" /></li>`
+        )}
       </ul>
+
       <button class="arrow left" @click=${this.scroll}>⇦</button>
       <button class="arrow right" @click=${this.scroll}>⇨</button>
     </div>`;

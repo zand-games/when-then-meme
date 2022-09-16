@@ -116,14 +116,16 @@ export class MemeSVG extends LitElement {
      </g>                   
  <foreignObject x="10" y="235" width="290" height="150">
            <emoji-selector
-              id="when"              
+              id="when"
+              selectedCategory="animals"             
               selectedItem="${this._store.value.when_face}"
               @emoji_changed="${this.emoji_changed_when}"
             ></emoji-selector>
       </foreignObject>
         <foreignObject x="300" y="210" width="290" height="150">
            <emoji-selector
-              id="then"              
+              id="then" 
+              selectedCategory="animals"             
               @emoji_changed="${this.emoji_changed_then}"
               selectedItem="${this._store.value.then_face}"
             ></emoji-selector>

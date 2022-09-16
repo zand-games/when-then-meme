@@ -21,6 +21,13 @@ export class MemeSVGResult extends LitElement {
         height="100%"
         xmlns="http://www.w3.org/2000/svg"
         viewbox="0 0 450 600">
+        <rect
+          rx="15"
+          width="100%"
+          height="100%"
+          fill="white"
+          style="stroke-width: 1px;stroke:##656563;"
+        />
         <g>
         <g id="g24">
         <g id="then" transform="translate(-9.3980344,37.592138)">
