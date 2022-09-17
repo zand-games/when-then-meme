@@ -38,6 +38,23 @@ export class MemeSVG extends LitElement {
       return val;
     });
   }
+
+  emoji_when_cat_changed(e) {
+    debugger;
+    this.shadowRoot.getElementById("emoji_selector_when").selectedItem =
+      e.target.value;
+
+    this.shadowRoot.getElementById("emoji_selector_when").selectedCategory =
+      e.target.selectedOptions[0].text;
+  }
+  emoji_then_cat_changed(e) {
+    debugger;
+    this.shadowRoot.getElementById("emoji_selector_then").selectedItem =
+      e.target.value;
+
+    this.shadowRoot.getElementById("emoji_selector_then").selectedCategory =
+      e.target.selectedOptions[0].text;
+  }
   render() {
     return html`
       <svg
@@ -114,20 +131,21 @@ export class MemeSVG extends LitElement {
            </g>
         </g>
      </g>                   
+ 
  <foreignObject x="10" y="235" width="290" height="150">
            <emoji-selector
-              id="when"
-              selectedCategory="animals"             
-              selectedItem="${this._store.value.when_face}"
+              id="emoji_selector_when"
+              selectedCategory="Crypto"    
+              selectedItem = 1                       
               @emoji_changed="${this.emoji_changed_when}"
             ></emoji-selector>
       </foreignObject>
         <foreignObject x="300" y="210" width="290" height="150">
            <emoji-selector
-              id="then" 
-              selectedCategory="animals"             
-              @emoji_changed="${this.emoji_changed_then}"
-              selectedItem="${this._store.value.then_face}"
+              id="emoji_selector_then" 
+              selectedCategory="Crypto"             
+              selectedItem = 2                       
+              @emoji_changed="${this.emoji_changed_then}"              
             ></emoji-selector>
       </foreignObject>    
  <use xlink:href="#path1" x="0" y="0"  />
@@ -193,6 +211,28 @@ export class MemeSVG extends LitElement {
           ></textarea>          
         </div>
       </foreignObject>
+      <foreignObject x="70" y="230" width="120" height="50">
+            <select
+              id="when_cat_select"
+              class="form-control"
+              @change="${this.emoji_when_cat_changed}"
+            >
+              <option value="1" selected>Crypto</option>
+              <option value="3">Animals</option>
+              <option value="5">Emojis</option>              
+            </select>
+     </foreignObject>
+     <foreignObject x="280" y="370" width="120" height="50">
+            <select
+              id="then_cat_select"
+              class="form-control"
+              @change="${this.emoji_then_cat_changed}"
+            >
+              <option value="2" selected>Crypto</option>
+              <option value="2">Animals</option>
+              <option value="2">Emojis</option>              
+            </select>
+     </foreignObject>
       </svg>     
     `;
   }

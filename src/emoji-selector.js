@@ -5,8 +5,8 @@ export class EmojiSelector extends LitElement {
     return {
       id: { type: String },
       color: { type: String },
-      selectedItem: { type: Number },
       selectedCategory: { type: String },
+      selectedItem: { type: Number },
     };
   }
   dispatchInput(Value) {
@@ -17,22 +17,33 @@ export class EmojiSelector extends LitElement {
       })
     );
   }
-  // createRenderRoot() {
-  //   return this;
-  // }
+
   constructor() {
     super();
-    this.selectedCategory = "emoji";
   }
+
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "selectedCategory") {
+        this.score = 0;
+        this.script();
+        this.selectDefault();
+
+        var slider = this.shadowRoot.querySelector(".slider");
+        var li = slider.querySelectorAll("ul li");
+        this.dispatchInput(li[this.score].id);
+      }
+    });
+  }
+
   firstUpdated() {
     super.firstUpdated();
-    this.script();
-    // this.selectDefault();
   }
-  //li = slider.querySelectorAll("ul li")
   script() {
     var slider = this.shadowRoot.querySelector(".slider");
     var li = slider.querySelectorAll("ul li");
+    li.forEach((item) => (item.style.display = "inline-block"));
+
     slider.firstElementChild.style.width = li.length * 150 + 50 + "px";
   }
   selectDefault() {
@@ -53,7 +64,7 @@ export class EmojiSelector extends LitElement {
       if (li[this.score].nextElementSibling == null) {
         li.forEach((item) => (item.style.display = "inline-block"));
         this.score = 0;
-        this.dispatchInput(li[this.score + 1].id);
+        this.dispatchInput(li[this.score].id);
         return;
       }
       li[this.score].style.display = "none";
@@ -65,22 +76,22 @@ export class EmojiSelector extends LitElement {
         li.forEach((item) => (item.style.display = "none"));
         this.score = li.length - 1;
         li[this.score].style.display = "inline-block";
-        this.dispatchInput(li[this.score + 1].id);
+        this.dispatchInput(li[this.score].id);
 
         return;
       }
       li[this.score - 1].style.display = "inline-block";
       this.score--;
     }
-    debugger;
-    this.dispatchInput(li[this.score + 1].id);
+    this.dispatchInput(li[this.score].id);
   }
   dictionary = {
-    crypto: ["50", "51", "52"],
-    animals: ["19", "20", "21", "22"],
-    emoji: ["1", "2", "3", "4", "5", "6"],
+    Crypto: ["bitcoin", "ethereum"],
+    Animals: ["21", "19", "20", "22"],
+    Emojis: ["1", "2", "3", "4", "5", "6"],
   };
   render() {
+    debugger;
     return html` <div style="background-color:transparent" class="slider">
       <ul class="slide_list">
         ${this.dictionary[this.selectedCategory].map(
