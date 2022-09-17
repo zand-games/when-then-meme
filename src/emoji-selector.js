@@ -86,12 +86,43 @@ export class EmojiSelector extends LitElement {
     this.dispatchInput(li[this.score].id);
   }
   dictionary = {
-    Crypto: ["bitcoin", "ethereum"],
-    Animals: ["21", "19", "20", "22"],
-    Emojis: ["1", "2", "3", "4", "5", "6"],
+    Crypto: [
+      "btc",
+      "eth",
+      "hot",
+      "ada",
+      "xrp",
+      "ltc",
+      "doge",
+      "bnb",
+      "atom",
+      "sol",
+      "trx",
+    ],
+    Animals: ["21", "19", "20", "22", "23", "24", "25", "26", "27"],
+    Emojis: [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+    ],
   };
   render() {
-    debugger;
+    // debugger;
     return html` <div style="background-color:transparent" class="slider">
       <ul class="slide_list">
         ${this.dictionary[this.selectedCategory].map(
@@ -125,6 +156,8 @@ export class EmojiSelector extends LitElement {
       .slider ul li img {
         width: 130px;
         height: 130px;
+
+        filter: drop-shadow(rgb(75, 75, 75) 0px 5px 1px);
       }
       .slider .arrow {
         position: absolute;

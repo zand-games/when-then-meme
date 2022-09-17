@@ -58,7 +58,10 @@ export class MemeSVGResult extends LitElement {
            <circle stroke="#000000" id="svg_4" cy="264.56018" cx="361.67255" fill="${
              this._store.value.then_color
            }" r="43.67086" display="${
-      this._store.value.then_face <= 10 ? "none" : "inline"
+      Number(this._store.value.then_face) <= 18 &&
+      Number(this._store.value.then_face) >= 11
+        ? "inline"
+        : "none"
     }"/>
            <path style="display:inline;fill:${
              this._store.value.then_color
@@ -69,7 +72,10 @@ export class MemeSVGResult extends LitElement {
         <g id="when" transform="translate(-106.61425,78.810811)">
            <circle transform="rotate(180,202.692,223.66)" stroke="#000000" id="svg_19" cy="223.65982" cx="202.69171"
               fill="${this._store.value.when_color}" r="43.67086" display="${
-      this._store.value.when_face <= 10 ? "none" : "inline"
+      Number(this._store.value.when_face) <= 18 &&
+      Number(this._store.value.when_face) >= 11
+        ? "inline"
+        : "none"
     }"/>
            <path style="display:inline;fill:${
              this._store.value.when_color

@@ -40,7 +40,7 @@ export class MemeSVG extends LitElement {
   }
 
   emoji_when_cat_changed(e) {
-    debugger;
+    // debugger;
     this.shadowRoot.getElementById("emoji_selector_when").selectedItem =
       e.target.value;
 
@@ -48,7 +48,7 @@ export class MemeSVG extends LitElement {
       e.target.selectedOptions[0].text;
   }
   emoji_then_cat_changed(e) {
-    debugger;
+    // debugger;
     this.shadowRoot.getElementById("emoji_selector_then").selectedItem =
       e.target.value;
 
@@ -61,12 +61,12 @@ export class MemeSVG extends LitElement {
         width="100%"
         height="100%"
         xmlns="http://www.w3.org/2000/svg"
-        viewbox="0 0 450 600">
+        viewbox="0 0 450 620">
        
         <g>
          
         <g id="g24">
-        <g id="then" transform="translate(-9.3980344,37.592138)">
+        <g id="then" transform="translate(-9.3980344,57.592138)">
            <g id="g1677" transform="matrix(-1.5316635,0,0,-1.4860372,745.73204,602.07665)">
               <g id="g669" transform="matrix(0.77669541,0,0,-0.56671342,241.82663,190.41321)">
               
@@ -132,7 +132,7 @@ export class MemeSVG extends LitElement {
         </g>
      </g>                   
  
- <foreignObject x="10" y="235" width="290" height="150">
+ <foreignObject x="10" y="245" width="160" height="160">
            <emoji-selector
               id="emoji_selector_when"
               selectedCategory="Crypto"    
@@ -140,15 +140,14 @@ export class MemeSVG extends LitElement {
               @emoji_changed="${this.emoji_changed_when}"
             ></emoji-selector>
       </foreignObject>
-        <foreignObject x="300" y="210" width="290" height="150">
+        <foreignObject x="300" y="210" width="160" height="160">
            <emoji-selector
               id="emoji_selector_then" 
               selectedCategory="Crypto"             
-              selectedItem = 2                       
+              selectedItem = 3                       
               @emoji_changed="${this.emoji_changed_then}"              
             ></emoji-selector>
       </foreignObject>    
- <use xlink:href="#path1" x="0" y="0"  />
         <text x="50" y="80" font-family="Carter One" font-size="1.5em" style="fill:black">
         When,
       </text>
@@ -228,7 +227,7 @@ export class MemeSVG extends LitElement {
               class="form-control"
               @change="${this.emoji_then_cat_changed}"
             >
-              <option value="2" selected>Crypto</option>
+              <option value="3" selected>Crypto</option>
               <option value="2">Animals</option>
               <option value="2">Emojis</option>              
             </select>
