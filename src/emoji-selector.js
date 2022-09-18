@@ -99,7 +99,7 @@ export class EmojiSelector extends LitElement {
       "sol",
       "trx",
     ],
-    Animals: ["21", "19", "20", "22", "23", "24", "25", "26", "27"],
+    Animals: ["21", "19", "20", "22", "23", "24", "25", "26", "27", "28"],
     Emojis: [
       "1",
       "2",

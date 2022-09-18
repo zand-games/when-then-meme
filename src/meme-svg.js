@@ -152,7 +152,7 @@ export class MemeSVG extends LitElement {
         When,
       </text>
       
-        <text x="50" y="470" font-family="Carter One"  font-size="1.5em" style="fill:black">
+        <text x="50" y="480" font-family="Carter One"  font-size="1.5em" style="fill:black">
        Then,
       </text>      
      
@@ -183,7 +183,7 @@ export class MemeSVG extends LitElement {
         </div>
       </foreignObject>
       <foreignObject
-        x="115" y="447" width="290" height="150"
+        x="115" y="457" width="290" height="150"
       >
         <div
           xmlns="http://www.w3.org/1999/xhtml"
