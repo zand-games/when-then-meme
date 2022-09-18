@@ -282,6 +282,14 @@
             },
             {
               "kind": "field",
+              "name": "dictionary",
+              "type": {
+                "text": "object"
+              },
+              "default": "{\r\n    Crypto: [\r\n      \"btc\",\r\n      \"eth\",\r\n      \"hot\",\r\n      \"ada\",\r\n      \"xrp\",\r\n      \"ltc\",\r\n      \"doge\",\r\n      \"bnb\",\r\n      \"atom\",\r\n      \"sol\",\r\n      \"trx\",\r\n    ],\r\n    Animals: [\"21\", \"19\", \"20\", \"22\", \"23\", \"24\", \"25\", \"26\", \"27\", \"28\"],\r\n    Emojis: [\r\n      \"1\",\r\n      \"2\",\r\n      \"3\",\r\n      \"4\",\r\n      \"5\",\r\n      \"6\",\r\n      \"7\",\r\n      \"8\",\r\n      \"9\",\r\n      \"10\",\r\n      \"11\",\r\n      \"12\",\r\n      \"13\",\r\n      \"14\",\r\n      \"15\",\r\n      \"16\",\r\n      \"17\",\r\n      \"18\",\r\n    ],\r\n  }"
+            },
+            {
+              "kind": "field",
               "name": "id",
               "privacy": "public",
               "attribute": "id"
@@ -291,6 +299,12 @@
               "name": "color",
               "privacy": "public",
               "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "selectedCategory",
+              "privacy": "public",
+              "attribute": "selectedCategory"
             },
             {
               "kind": "field",
@@ -315,6 +329,10 @@
             {
               "name": "color",
               "fieldName": "color"
+            },
+            {
+              "name": "selectedCategory",
+              "fieldName": "selectedCategory"
             },
             {
               "name": "selectedItem",
@@ -463,6 +481,24 @@
                   "name": "e"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "emoji_when_cat_changed",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "emoji_then_cat_changed",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
             }
           ],
           "superclass": {
@@ -569,7 +605,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"15\""
+              "default": "\"1\""
             },
             {
               "kind": "field",
@@ -577,7 +613,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"8\""
+              "default": "\"1\""
             },
             {
               "kind": "field",

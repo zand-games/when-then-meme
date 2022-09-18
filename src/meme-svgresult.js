@@ -147,7 +147,7 @@ export class MemeSVGResult extends LitElement {
               x="70"
               y="230"
             >
-              Zand.Games
+              Zand.Games/when-then-meme
             </text>
           </g>
       </svg>
